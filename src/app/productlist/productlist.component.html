@@ -1,0 +1,14 @@
+<ul class="list-group">
+
+  <li (click)="onSelect(product)" *ngFor="let product of products">
+   {{
+    product.id
+   }}
+   {{
+    product.name
+   }}
+   {{
+    product.description
+   }}
+  </li>
+</ul>
