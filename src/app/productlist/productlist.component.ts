@@ -1,22 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router'
+import {ProductService} from '..//product.service'
 @Component({
   selector: 'app-productlist',
   templateUrl: './productlist.component.html',
   styleUrls: ['./productlist.component.css']
 })
 export class ProductlistComponent implements OnInit {
-  public products=[{"id":"1","name":"adidas","price":"2345"}
-,{"id":"2","name":"nike","price":"2345"},
-{"id":"3","name":"rebook","price":"2345"}]
-  constructor(private router:Router) { }
+  name:string=''
+  productList;
+  constructor(private router:Router,private prodService:ProductService) { }
 
   ngOnInit() {
   }
+
+  getProductName(){
+    this.productList= this.prodService.getProductDetails()
+    // console.log("") 
+  }
+  
   onSelect (product)
   {
    alert(product.name)
-   this.router.navigate(['/products',product.name])
+   this.router.navigate(['/products',product.id])
 
   }
 
